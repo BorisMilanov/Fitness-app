@@ -9,12 +9,12 @@ function App() {
     {id: 3, title: "add tasks to 2"},
     ])
   return (
-    <>
+    <div className='Main task'>
     
 
       <div><p>Hi</p></div>
       <DndContext collisionDetection={closestCorners}><Column tasks={tasks}/></DndContext>
-    </>
+    </div>
   )
 }
 
