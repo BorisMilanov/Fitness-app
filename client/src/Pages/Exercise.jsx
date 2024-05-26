@@ -11,7 +11,7 @@ import {
   closestCorners,
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-
+import "./Exercise"
 export default function Exercise() {
   const [tasks, setTasks] = useState([
     { id: 1, title: "Add tests to homepage" },
