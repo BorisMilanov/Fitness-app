@@ -1,21 +1,65 @@
-import { useState } from 'react'
-import './App.css'
-import { DndContext, closestCorners } from "@dnd-kit/core"
-import { Column } from './assets/compunents/Column'
-function App() {
+import { useState } from "react";
+import Program from "./Pages/Programs";
+import {
+  DndContext,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  closestCorners,
+} from "@dnd-kit/core";
+import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+
+import { Column } from "./assets/components/Column";
+import { Input } from "./assets/components/Input/Input";
+import {BlogPage} from "./Pages/Programs";
+import "./App.css";
+
+export default function App() {
   const [tasks, setTasks] = useState([
-    {id: 1, title: "add tasks"}, 
-    {id: 2, title: "add tasks"}, 
-    {id: 3, title: "add tasks to 2"},
-    ])
+    { id: 1, title: "Add tests to homepage" },
+    { id: 2, title: "Fix styling in about section" },
+    { id: 3, title: "Learn how to center a div" },
+  ]);
+
+  const addTask = (title) => {
+    setTasks((tasks) => [...tasks, { id: tasks.length + 1, title }]);
+  };
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const getTaskPos = (id) => tasks.findIndex((task) => task.id === id);
+
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+
+    if (active.id === over.id) return;
+
+    setTasks((tasks) => {
+      const originalPos = getTaskPos(active.id);
+      const newPos = getTaskPos(over.id);
+
+      return arrayMove(tasks, originalPos, newPos);
+    });
+  };
+
   return (
-    <div className='Main task'>
-    
-
-      <div><p>Hi</p></div>
-      <DndContext collisionDetection={closestCorners}><Column tasks={tasks}/></DndContext>
+    <div className="App">
+      <BlogPage>a</BlogPage>
+      <h1>My Tasks ✅</h1>
+      <Input onSubmit={addTask} />
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCorners}
+        onDragEnd={handleDragEnd}
+      >
+        <Column id="toDo" tasks={tasks} />
+      </DndContext>
     </div>
-  )
+  );
 }
-
-export default App
