@@ -20,7 +20,7 @@
 // export default App;
 // App.jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home';
+import Home from './Pages/LInkOne';
 import Exersice from './Pages/Exercise'
 
 function App() {

@@ -1,8 +1,8 @@
 // Home.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./Exercise"
-function Home() {
+import "./Exercise.css"
+function LinkOne() {
   const navigate = useNavigate();
 
   const goToExercise = () => {
@@ -11,10 +11,10 @@ function Home() {
 
   return (
     <div className='father-div'>
-      <h1>Home Page</h1>
-      <button onClick={goToExercise} className='cat'>Go to About</button>
+ 
+      <button onClick={goToExercise} className='ball'><p className='exerciseTitle'>Bench press</p></button>
     </div>
   );
 }
 
-export default Home;
+export default LinkOne;
