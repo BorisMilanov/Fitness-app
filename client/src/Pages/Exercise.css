@@ -1,0 +1,49 @@
+body{
+    -webkit-filter: brightness(1.2) contrast(20);
+  background:#000;
+  }
+  
+  .father-div{
+  
+  width: 50%;
+  height:500px;
+  margin: 0 auto;
+  padding-top:200px;
+  background-color: #7a0101;
+  padding-left:40%;
+  
+  -webkit-filter: blur(20px)
+   
+  }
+  
+  .cat{
+   background: #FFF;
+    width: 150px;
+  height: 150px;
+   font-size: 200px;
+    border-radius: 250px;
+     -webkit-animation: right 15s infinite;
+  
+  }
+  
+  @-webkit-keyframes right {
+  0%,100%   { margin-left: 100px }
+  50% { margin-left: -100px }
+  }
+  
+  .dog{
+   background: #FFF;
+    width: 150px;
+  height: 150px;
+  
+    border-radius: 250px;
+  -webkit-animation: lefty 5s infinite;
+  position:relative;
+  z-index:4;
+     
+  }
+  
+  @-webkit-keyframes lefty {
+  0%,100%   { margin-left: -250px }
+  50% { margin-left: -50px }
+  }
