@@ -15,7 +15,10 @@ body {
     height: 100vh;
     overflow: hidden;
   }
-  
+  .inputs{
+    position: fixed;
+    top: 50px;
+  }
   .ball {
     animation: float 3.5s ease-in-out infinite;
     height: 200px;

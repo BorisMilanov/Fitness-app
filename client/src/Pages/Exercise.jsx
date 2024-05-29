@@ -44,11 +44,17 @@ export default function Exercise() {
       return arrayMove(tasks, originalPos, newPos);
     });
   };
+  const [series, setSeries] = useState(['div'])
+  function addNewSeries() {
+    const currentSeries  = [...series]
+    currentSeries.push('NewSeries')
+    setSeries(currentSeries)
+  }
 
   return (
-    <div >
-      <h1>My Tasks ✅</h1>
-      <Input onSubmit={addTask} />
+   
+      <div>
+      {series?.map((currentSeries, index)=>{return <div key={currentSeries} id={`expese-${index}`}>  <Input onSubmit={addTask} />
       <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}
@@ -56,6 +62,8 @@ export default function Exercise() {
       >
         <Column id="toDo" tasks={tasks} />
       </DndContext>
-    </div>
-  );
-}
+      <button onClick={() => addNewSeries()}>Add new series</button>
+    </div>})}
+    </div>);
+  
+  }
