@@ -27,7 +27,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/Fitness-app" element={<Home />} />
         <Route path="/exercise" element={<Exersice />} />
       </Routes>
     </Router>
