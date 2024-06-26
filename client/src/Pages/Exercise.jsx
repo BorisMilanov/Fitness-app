@@ -47,13 +47,19 @@ export default function Exercise() {
   const [series, setSeries] = useState(['div'])
   function addNewSeries() {
     const currentSeries  = [...series]
-    currentSeries.push('NewSeries')
+    currentSeries.push('NewSeriesAdd')
+    setSeries(currentSeries)
+  }  function removeNewSeries() {
+    const currentSeries  = [...series]
+    currentSeries.pop('NewSeries')
     setSeries(currentSeries)
   }
 
   return (
    
       <div>
+      <button onClick={() => addNewSeries()}>Add new series</button>
+
       {series?.map((currentSeries, index)=>{return <div key={currentSeries} id={`expese-${index}`}>  <Input onSubmit={addTask} />
       <DndContext
         sensors={sensors}
@@ -62,7 +68,8 @@ export default function Exercise() {
       >
         <Column id="toDo" tasks={tasks} />
       </DndContext>
-      <button onClick={() => addNewSeries()}>Add new series</button>
+    
+      <button onClick={() => removeNewSeries()}>Remove new series</button>
     </div>})}
     </div>);
   
