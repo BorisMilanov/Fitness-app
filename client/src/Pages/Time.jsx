@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
 
-import { HourDropdown, MinuteDropdown } from './TimeDropdowns'; // Adjust the import path as needed
-
+import { HourDropdown} from './TimeDropdowns'; // Adjust the import path as needed
+import  './Time.css'
 const Nav = () => {
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [printedOption, setPrintedOption] = useState('');
 
-  const handleToggleDropdown = (dropdownId) => {
-    setOpenDropdown(openDropdown === dropdownId ? null : dropdownId);
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
+  const handleButtonClick = () => {
+    setPrintedOption(selectedOption);
+  };
+
+
   return (
-    <nav>
+    <nav className='navi'>
       <ul>
-        <li>
-          <button onClick={() => handleToggleDropdown(1)}>Select Time</button>
-         
-            <div className="dropdown-content">
-              <HourDropdown />
-              <MinuteDropdown />
-            </div>
+        <li className='li'>
           
+          <div className="dropdown-content" value={selectedOption} onChange={handleSelectChange}>
+              <HourDropdown  />
+          
+            </div>
+            
+            <button onClick={handleButtonClick}>Print Selected Option</button>
+          {printedOption && <p>The traning will start: {printedOption} : 00</p>}
         </li>
       </ul>
     </nav>
